@@ -3,6 +3,9 @@ import { ParsedUrlQuery } from 'querystring';
 import { getAllProducts } from '@framework/product/getAllProducts';
 import { getConfig } from '@framework/api/config';
 
+import { ProductCard } from '@components/Product';
+import { Grid } from '@components/ui';
+
 export const getStaticProps = async (context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>) => {
   const config = getConfig();
 
@@ -19,7 +22,11 @@ export const getStaticProps = async (context: GetStaticPropsContext<ParsedUrlQue
 const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
-      <h1>{JSON.stringify(products)}</h1>
+      <Grid>
+        {products.slice(0, 3).map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Grid>
     </div>
   );
 };

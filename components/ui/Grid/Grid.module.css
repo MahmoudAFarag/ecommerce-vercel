@@ -1,0 +1,8 @@
+.root > * {
+  @apply row-span-1 overflow-hidden;
+  max-height: 800px;
+
+  @screen lg {
+    height: inherit;
+  }
+}

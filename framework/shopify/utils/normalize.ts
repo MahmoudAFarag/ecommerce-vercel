@@ -2,7 +2,7 @@ import { Product } from '@common/types/Product';
 import { ImageConnection, Product as ShopifyProduct } from '../schema';
 
 export const normalizedProduct = (productNode: ShopifyProduct): Product => {
-  const { id, title, handle, vendor, description, images, ...rest } = productNode;
+  const { id, title, handle, vendor, description, images, priceRange, ...rest } = productNode;
 
   const product = {
     id,
@@ -12,6 +12,7 @@ export const normalizedProduct = (productNode: ShopifyProduct): Product => {
     path: `/${handle}`,
     slug: handle.replace(/^\/+|\/+$/g, ''),
     images: normalizedProductImages(images),
+    price: priceRange,
     ...rest,
   };
 

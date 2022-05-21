@@ -5,7 +5,13 @@ interface ILayout {
 }
 
 const Layout = ({ children }: ILayout) => {
-  return <div className='layout'>{children}</div>;
+  return (
+    // root
+    <div className='h-full mx-auto'>
+      {/* fit */}
+      <main className='min-h-[calc(100vh-88px)] bg-primary text-primary'>{children}</main>
+    </div>
+  );
 };
 
 export default Layout;
